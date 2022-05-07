@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Strawberry",
+        "img": "https://c4.wallpaperflare.com/wallpaper/977/425/264/strawberries-fruit-wallpaper-preview.jpg",
+        "price": "10"
+    },
+    {
+        "name": "Blueberry",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEXk9U22RlLEXQ1l8Siq1MTNKSmjrjPsRJv9Vb_-YcicZDxj539vIlnlnEYpIZbsQznYM&usqp=CAU",
+        "price": "350"
+    },
+    {
+        "name": "Pomegranate",
+        "img": "https://c4.wallpaperflare.com/wallpaper/634/544/1017/fruits-pomegranate-fruit-wallpaper-preview.jpg",
+        "price": "10"
+    },
+    {
+        "name": "Apple",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgeIAIOsJEkRIEky2Jf1BePRzzMKD6mzSKjC6L1sbf4J-OJdb9-VAiSFxZzzhQwJuGf6s&usqp=CAU",
+        "price": "10"
+    },
+    {
+        "name": "Cherry",
+        "img": "https://w0.peakpx.com/wallpaper/397/22/HD-wallpaper-cherry-fruits-close-up-ripe-cherry-macro-background-with-cherry.jpg",
+        "price": "10"
+    },
+    {
+        "name": "Guava",
+        "img": "https://media.istockphoto.com/photos/closeup-of-a-red-guava-cut-in-half-in-the-background-several-guavas-picture-id1224636159?b=1&k=20&m=1224636159&s=170667a&w=0&h=yHaNUl0TnyQPNtviqTLpBsmHC_7-lKrHIcWPDZnJ0hw=",
+        "price": "10"
+    }
+    
+]
