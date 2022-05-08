@@ -16,7 +16,7 @@ const Header = () => {
             <nav className='mt-4 bg-success p-3 text-start'>
                 <div className='container'>
                     <Link to='/' className='menu'>Home</Link>
-                    <Link to='' className='menu'>Products</Link>
+                    <Link to='/product' className='menu'>Manage Inventories</Link>
                     <Link to='/about' className='menu'>About</Link>
                     <Link to='/blogs' className='menu'>Blogs</Link>
                     <Link to='' className='menu'>Reviews</Link>
