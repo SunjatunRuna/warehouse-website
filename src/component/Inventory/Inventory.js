@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useForm } from "react-hook-form";
 
 const Inventory = () => {
     const { id } = useParams();
     const [data, setData] = useState({});
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
 
     useEffect(() => {
         const url = `http://localhost:5000/product/${id}`;
@@ -32,11 +29,7 @@ const Inventory = () => {
                     </div>
                 </div>
                 <div className='col-lg-6'>
-                    <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
-                        <input className='border-bottom border-mute' {...register("name")} />
-                        <input className='border-bottom border-mute' type="number" {...register("number")} />
-                        <input type="submit" />
-                    </form>
+
                 </div>
             </div>
         </div>
