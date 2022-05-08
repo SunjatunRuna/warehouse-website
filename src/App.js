@@ -3,6 +3,7 @@ import './App.css';
 import About from './component/About/About';
 import Header from './component/Header/Header';
 import Home from './component/Home/Home';
+import Inventory from './component/Inventory/Inventory';
 import Login from './component/Login/Login';
 import Signup from './component/Signup/Signup';
 
@@ -16,6 +17,8 @@ function App() {
           <Route path='/about' element={<About/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
+          <Route path='/inventory' element={<Inventory/>}></Route>
+          <Route path='/inventory/:id' element={<Inventory/>}></Route>
         </Routes>
     </div>
   );
