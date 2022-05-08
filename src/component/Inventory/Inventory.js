@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Inventory = () => {
     const { id } = useParams();
@@ -11,6 +11,11 @@ const Inventory = () => {
             .then(res => res.json())
             .then(data => setData(data));
     }, [])
+
+    const navigate = useNavigate()
+    const updateQuantity = id =>{
+        navigate(`/update/${id}`)
+    }
     return (
         <div className='my-5'>
             <h3>Product Detail: </h3>
@@ -25,7 +30,7 @@ const Inventory = () => {
                         <li>{data.description}</li>
                         <li>Quantity: {data.quantity}</li>
                     </ul>
-                    <button className='border-0 rounded mx-2 px-4'>EDIT</button>
+                    <button onClick={() => updateQuantity(data._id)} className='border-0 rounded mx-2 px-4'>EDIT</button>
                     <button className='border-0 rounded bg-success text-white px-4'>DELIVERED</button>
                 </div>
             </div>
