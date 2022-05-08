@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Product from '../Product/Product';
 
 const ManageInventories = () => {
     const [items, setItems] = useState([]);
@@ -15,10 +14,10 @@ const ManageInventories = () => {
             },
             body: JSON.stringify(data)
         })
-        .then(res => res.json())
-        .then(result => {
-            console.log(result);
-        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+            })
 
     };
 
@@ -27,6 +26,22 @@ const ManageInventories = () => {
             .then(res => res.json())
             .then(data => setItems(data))
     }, []);
+
+    const deleteItem = id =>{
+        const proceed = window.confirm("Are you sure?");
+        if(proceed){
+            const url = `http://localhost:5000/product/${id}`;
+            fetch(url, {
+                method: "DELETE"
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                const remaining = items.filter(item => item._id !== id)
+                setItems(remaining)
+            })
+        }
+    }
     return (
         <div className='my-5'>
             <h3 className='text-secondary my-5 fw-bold'><span className='border-bottom border-success'>Our</span> <span className='text-success'>Products</span></h3>
@@ -34,10 +49,16 @@ const ManageInventories = () => {
                 <div className='col-lg-8 mx-auto row row-cols-lg-2'>
                     {
                         items.map(item => (
-                            <Product
-                                key={item._id}
-                                item={item}
-                            ></Product>
+                            <div className='container-fluid mx-auto my-3 row'>
+                                <div className='col-lg-5'>
+                                    <img src={item.img} alt="" className='img-fluid w-75' />
+                                </div>
+                                <div className='col-lg-7 text-start'>
+                                    <h5>{item.name}</h5>
+                                    <small>Price: {item.price}</small><br />
+                                    <button onClick={() => deleteItem(item._id)} className='border-0 bg-success text-white rounded'>Delete Item</button>
+                                </div>
+                            </div>
                         ))
                     }
                 </div>
@@ -49,7 +70,7 @@ const ManageInventories = () => {
                         <label htmlFor="name" className='text-start'>Name: </label>
                         <input className='border border-mute my-2 ps-2' type="text" {...register("name")} />
                         <label htmlFor="description" className='text-start'>Description: </label>
-                        <textarea className='border border-mute mb-2 ps-2' type="text" {...register("description")} />                      
+                        <textarea className='border border-mute mb-2 ps-2' type="text" {...register("description")} />
                         <label htmlFor="quantity" className='text-start'>Quantity: </label>
                         <input className='border border-mute  mb-2 ps-2' type="number" {...register("quantity")} />
                         <label htmlFor="price" className='text-start'>Price: </label>

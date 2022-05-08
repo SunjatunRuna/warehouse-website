@@ -14,22 +14,19 @@ const Inventory = () => {
     return (
         <div className='my-5'>
             <h3>Product Detail: </h3>
-            <div className='container-fluid my-5 row w-100 mx-auto'>
-                <div className='col-lg-6 row'>
-                    <div className='col-lg-5'>
-                        <img src={data.img} className='img-fluid' alt="" />
-                    </div>
-                    <div className='col-lg-7 text-start'>
-                        <h5>Fruit: {data.name}</h5>
-                        <ul>
-                            <li>Per kg price: {data.price}</li>
-                            <li>{data.description}</li>
-                            <li>Quantity: {data.quantity}</li>
-                        </ul>
-                    </div>
+            <div className='container-fluid my-5 shadow py-2 px-0 row w-50 mx-auto'>
+                <div className='col-lg-5'>
+                    <img src={data.img} className='img-fluid' alt="" />
                 </div>
-                <div className='col-lg-6'>
-
+                <div className='col-lg-7 text-start'>
+                    <h5>Fruit: {data.name}</h5>
+                    <ul>
+                        <li>Per kg price: {data.price}</li>
+                        <li>{data.description}</li>
+                        <li>Quantity: {data.quantity}</li>
+                    </ul>
+                    <button className='border-0 rounded mx-2 px-4'>EDIT</button>
+                    <button className='border-0 rounded bg-success text-white px-4'>DELIVERED</button>
                 </div>
             </div>
         </div>
