@@ -11,15 +11,14 @@ const Header = () => {
         signOut(auth)
     }
     return (
-        <div className='bg-light'>
+        <div className='text-secondary'>
             <h3 className='mt-4'>Healthy Fruits Store</h3>
             <nav className='mt-4 bg-success p-3 text-start'>
                 <div className='container'>
                     <Link to='/' className='menu'>Home</Link>
                     <Link to='/product' className='menu'>Manage Inventories</Link>
-                    <Link to='/about' className='menu'>About</Link>
+                    <Link to='/add' className='menu'>Add Product</Link>
                     <Link to='/blogs' className='menu'>Blogs</Link>
-                    <Link to='' className='menu'>Reviews</Link>
                     <span className='text-end'>
                         {
                             user ?

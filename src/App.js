@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import About from './component/About/About';
 import AddProduct from './component/AddProduct/AddProduct';
+import Error from './component/Error/Error';
 import Header from './component/Header/Header';
 import Home from './component/Home/Home';
 import Inventory from './component/Inventory/Inventory';
@@ -18,13 +18,13 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/home' element={<Home/>}></Route>
-          <Route path='/about' element={<About/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/inventory/:id' element={<RequireAuth><Inventory/></RequireAuth> }></Route>
           <Route path='/product' element={<RequireAuth><ManageInventories/></RequireAuth>}></Route>
           <Route path='/add' element={<AddProduct />}></Route>
           <Route path='/update/:id' element={<Update />}></Route>
+          <Route path='*' element={<Error />}></Route>
         </Routes>
     </div>
   );

@@ -13,9 +13,10 @@ const Update = () => {
     }, []);
     const updateQty = event => {
         event.preventDefault();
-        const quantity = event.target.quantity.value;
-        
-        const updateProduct = quantity ;
+        const newQuantity = event.target.quantity.value;
+        const oldQuantity = parseInt(qty.quantity);
+        const updateQuantity = oldQuantity + parseInt(newQuantity);
+        const updateProduct = updateQuantity ;
         const url = `http://localhost:5000/product/${id}`;
         fetch(url, {
             method: 'PUT',

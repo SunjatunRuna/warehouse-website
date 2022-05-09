@@ -21,7 +21,7 @@ const AddProduct = () => {
     };
     return (
         <div className='w-50 mx-auto'>
-            <h5 className='fw-bold my-5'>Add Items:</h5>
+            <h4 className='fw-bold my-5'>Add <span className='text-success'>Product</span>:</h4>
             <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="img" className='text-start'>Photo URL: </label>
                 <input className='border border-mute my-2 ps-2' name='img' type="text" {...register("img")} />
@@ -31,6 +31,8 @@ const AddProduct = () => {
                 <textarea className='border border-mute mb-2 ps-2' name='description' type="text" {...register("description")} />
                 <label htmlFor="quantity" className='text-start'>Quantity: </label>
                 <input className='border border-mute  mb-2 ps-2' name='quantity' type="number" {...register("quantity")} />
+                <label htmlFor="supplier" className='text-start'>Supplier: </label>
+                <input className='border border-mute my-2 ps-2' name='supplier' type="text" {...register("supplier")} />
                 <label htmlFor="price" className='text-start'>Price: </label>
                 <input className='border border-mute  mb-2 ps-2' name='price' type="number" {...register("price")} />
                 <input className='py-2 bg-success text-white rounded' type="submit" />

@@ -1,17 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Inventory = () => {
     const { id } = useParams();
     const [data, setData] = useState({});
+    const [reload, setReload] = useState(true);
 
     useEffect(() => {
         const url = `http://localhost:5000/product/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setData(data));
-    }, [])
-
+    }, [reload])
+    const reduceQuantity = () => {
+        const quantity = parseInt(data.quantity) - 1;
+        const updateQuantity = {quantity};
+        const url = `http://localhost:5000/product/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateQuantity)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            toast('Delivered Successful');
+            setReload(!reload);
+        })
+    }
     const navigate = useNavigate()
     const updateQuantity = id =>{
         navigate(`/update/${id}`)
@@ -31,7 +51,8 @@ const Inventory = () => {
                         <li>Quantity: {data.quantity}</li>
                     </ul>
                     <button onClick={() => updateQuantity(data._id)} className='border-0 rounded mx-2 px-4'>EDIT</button>
-                    <button className='border-0 rounded bg-success text-white px-4'>DELIVERED</button>
+                    <button onClick={reduceQuantity} className='border-0 rounded bg-success text-white px-4'>DELIVERED</button>
+                    <ToastContainer />
                 </div>
             </div>
         </div>

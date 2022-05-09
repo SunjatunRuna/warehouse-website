@@ -6,6 +6,8 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import img from './sign-account-user-authorization-login-authentication-page-concept-laptop-with-login-password-form-page-screen-stock-illustration_100456-1590.jpg'
 import { Spinner } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
