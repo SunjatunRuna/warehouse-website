@@ -48,6 +48,7 @@ const Inventory = () => {
                     <ul>
                         <li>Per kg price: {data.price}</li>
                         <li>{data.description}</li>
+                        <li>Supplier: {data.supplier}</li>
                         <li>Quantity: {data.quantity}</li>
                     </ul>
                     <button onClick={() => updateQuantity(data._id)} className='border-0 rounded mx-2 px-4'>EDIT</button>
