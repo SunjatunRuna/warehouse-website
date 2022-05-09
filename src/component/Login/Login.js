@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import './Login.css';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import img from './sign-account-user-authorization-login-authentication-page-concept-laptop-with-login-password-form-page-screen-stock-illustration_100456-1590.jpg'
+import { Spinner } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -11,10 +13,11 @@ const Login = () => {
     const [
         signInWithEmailAndPassword,
         user,
-        loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const emailBlur = event => {
         setEmail(event.target.value);
@@ -26,8 +29,17 @@ const Login = () => {
         event.preventDefault()
         signInWithEmailAndPassword(email, password);
     }
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
     if (user) {
-        navigate('/home')
+        navigate(from, {replace: true});
+    }
+    if(sending){
+        return <p className='mt-5 py-5'><Spinner animation="grow" /></p>
+    }
+    if(error){
+        return <div>
+            <p>Error: {error.message}</p>
+        </div>
     }
     return (
         <div className='container'>
@@ -38,7 +50,13 @@ const Login = () => {
                         <input onBlur={emailBlur} type="email" placeholder='email' className='w-100 mb-4 border-bottom border-mute' /><br />
                         <input onBlur={passwordBlur} type="password" name="password" placeholder='password' id="" className='w-100 border-bottom border-mute' /><br />
                         <button className='w-100 text-white py-2 mt-4 border border-0 bg-success rounded'>Login</button>
-                        <button className='btn-link bg-white text-danger mt-2 border-0'>Reset Password?</button>
+                        <button 
+                        onClick={async () => {
+                            await sendPasswordResetEmail(email);
+                            toast('Email has been sent');
+                          }}
+                        className='btn-link bg-white text-danger mt-2 border-0'>Reset Password?</button>
+                        <ToastContainer />
                         <p className='mb-5'>Don't have an account? <Link to='/signup'>Create a new one</Link> </p>
                     </form>
                 </div>
