@@ -17,6 +17,7 @@ const Login = () => {
         user,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
     const navigate = useNavigate()
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -31,7 +32,6 @@ const Login = () => {
         event.preventDefault()
         signInWithEmailAndPassword(email, password);
     }
-    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
     if (user) {
         navigate(from, {replace: true});
     }
