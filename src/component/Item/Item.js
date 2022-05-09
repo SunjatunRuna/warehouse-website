@@ -21,7 +21,9 @@ const Item = ({ item }) => {
                         <p>Supplier: {supplier}</p>
                         <small>{description}</small>
                     </Card.Text>
-                    <Button onClick={() => updateButton(_id)} variant="success">Update</Button>
+                    <Card.Footer className='bg-white border border-success py-0 m-0'>
+                    <Button onClick={() => updateButton(_id)} variant="white">Update</Button>
+                    </Card.Footer>
                 </Card.Body>
             </Card>
         </div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div className='container-fluid'>
+        <div className='container-fluid mb-0 bg-light'>
             <div className='row text-secondary shadow'>
                 <div className='col-lg-4'>
                     <h6 className='my-4 fw-bold'>Healthy Fruits Store</h6>
@@ -27,7 +27,7 @@ const Footer = () => {
                         <li><Link to='/reviews' className='menu text-success'>Reviews</Link> </li>
                     </ul>
                 </div>
-                <p className='bg-success text-white py-3'>Created by <span className=' fw-bold'>Sunjatun Ahmed Runa</span> || Copyright &copy; 2022</p>
+                <p className='bg-success text-white py-3 mb-0'>Created by <span className=' fw-bold'>Sunjatun Ahmed Runa</span> || Copyright &copy; 2022</p>
             </div>
             
         </div>

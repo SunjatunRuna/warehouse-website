@@ -12,7 +12,7 @@ const Header = () => {
     }
     return (
         <div className='text-secondary'>
-            <h3 className='mt-4'>Healthy Fruits Store</h3>
+            <h3 className='mt-4'>Healthy <span className='text-success fw-bold'>FRUITS</span> Store</h3>
             <nav className='mt-4 bg-success p-3 text-start'>
                 <div className='container'>
                     <Link to='/' className='menu'>Home</Link>
