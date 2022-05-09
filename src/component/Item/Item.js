@@ -2,24 +2,26 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-const Item = ({item}) => {
-    const { _id, name, price, img } = item;
+const Item = ({ item }) => {
+    const { _id, name, price, img, supplier, description } = item;
     const navigate = useNavigate();
 
-    const updateButton = id =>{
+    const updateButton = id => {
         navigate(`/inventory/${id}`);
         console.log(id)
     }
     return (
         <div className='mx-auto'>
             <Card className='shadow' style={{ width: '15rem', margin: '15px' }}>
-                <Card.Img variant="top" src={img} className='img-fluid' style={{height: '180px'}} />
+                <Card.Img variant="top" src={img} className='img-fluid' style={{ height: '180px' }} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
-                        Price: BDT {price}
+                        <p>Price: BDT {price}</p>
+                        <p>Supplier: {supplier}</p>
+                        <small>{description}</small>
                     </Card.Text>
-                    <Button onClick={ () => updateButton(_id)} variant="success">Update</Button>
+                    <Button onClick={() => updateButton(_id)} variant="success">Update</Button>
                 </Card.Body>
             </Card>
         </div>

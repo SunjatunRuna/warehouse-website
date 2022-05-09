@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Update = () => {
     const {id} = useParams();
-    const [qty, setQty] = useState('');
+    const [qty, setQty] = useState({});
     useEffect(() => {
         const url = `http://localhost:5000/product/${id}`;
         fetch(url)
@@ -12,21 +13,22 @@ const Update = () => {
     }, []);
     const updateQty = event => {
         event.preventDefault();
-        const quantity = event.target.qty.value;
+        const quantity = event.target.quantity.value;
         
-        const updateProduct = quantity;
-        fetch('http://localhost:5000/product', {
+        const updateProduct = quantity ;
+        const url = `http://localhost:5000/product/${id}`;
+        fetch(url, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updateProduct)
+            body: JSON.stringify({updateProduct})
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            alert('successful')
-            event.target.reset
+            console.log('success', data);
+            toast('successful');
+            event.target.reset();
         })
     }
 
@@ -35,9 +37,10 @@ const Update = () => {
         <div className='my-5'>
             <h4 className='my-3'>Update Quantity: {qty.name}</h4>
             <form onSubmit={updateQty}>
-                <input className='border border-mute mx-3' type="number" />
+                <input className='border border-mute mx-3' name='quantity' type="number" />
                 <button className='border-0 px-3'>UPDATE</button>
             </form>
+            <ToastContainer />
         </div>
     );
 };

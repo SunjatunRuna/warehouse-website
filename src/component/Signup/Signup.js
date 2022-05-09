@@ -6,6 +6,7 @@ import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'rea
 import Social from '../Social/Social';
 import { Spinner } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Signup = () => {
