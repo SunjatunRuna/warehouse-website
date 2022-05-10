@@ -5,7 +5,7 @@ const AddProduct = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data);
-        const url = `http://localhost:5000/product`;
+        const url = `https://immense-spire-20781.herokuapp.com/product`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -20,7 +20,7 @@ const AddProduct = () => {
 
     };
     return (
-        <div className='w-50 mx-auto'>
+        <div className='w-50 mx-auto my-5'>
             <h4 className='fw-bold my-5'>Add <span className='text-success'>Product</span>:</h4>
             <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="img" className='text-start'>Photo URL: </label>

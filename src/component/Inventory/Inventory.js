@@ -9,7 +9,7 @@ const Inventory = () => {
     const [reload, setReload] = useState(true);
 
     useEffect(() => {
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://immense-spire-20781.herokuapp.com/product/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setData(data));
@@ -17,7 +17,7 @@ const Inventory = () => {
     const reduceQuantity = () => {
         const quantity = parseInt(data.quantity) - 1;
         const updateQuantity = {quantity};
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://immense-spire-20781.herokuapp.com/product/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -50,6 +50,7 @@ const Inventory = () => {
                         <li>{data.description}</li>
                         <li>Supplier: {data.supplier}</li>
                         <li>Quantity: {data.quantity}</li>
+                        <li>Sold: {data.quantity}</li>
                     </ul>
                     <button onClick={() => updateQuantity(data._id)} className='border-0 rounded mx-2 px-4'>EDIT</button>
                     <button onClick={reduceQuantity} className='border-0 rounded bg-success text-white px-4'>DELIVERED</button>

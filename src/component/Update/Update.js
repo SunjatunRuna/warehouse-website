@@ -5,19 +5,24 @@ import { toast, ToastContainer } from 'react-toastify';
 const Update = () => {
     const {id} = useParams();
     const [qty, setQty] = useState({});
+    const [input, setInput] = useState('');
+
     useEffect(() => {
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://immense-spire-20781.herokuapp.com/product/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setQty(data));
     }, []);
-    const updateQty = event => {
-        event.preventDefault();
-        const newQuantity = event.target.quantity.value;
-        const oldQuantity = parseInt(qty.quantity);
-        const updateQuantity = oldQuantity + parseInt(newQuantity);
+
+    const inputField = event =>{
+        const quantity = event.target.value;
+        setInput(quantity)
+    }
+    const updateQty = () => {
+        const updateQuantity = parseInt(qty.quantity) + parseInt(input);
+        console.log(updateQuantity);
         const updateProduct = updateQuantity ;
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://immense-spire-20781.herokuapp.com/product/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -29,7 +34,6 @@ const Update = () => {
         .then(data => {
             console.log('success', data);
             toast('successful');
-            event.target.reset();
         })
     }
 
@@ -37,10 +41,8 @@ const Update = () => {
     return (
         <div className='my-5'>
             <h4 className='my-3'>Update Quantity: {qty.name}</h4>
-            <form onSubmit={updateQty}>
-                <input className='border border-mute mx-3' name='quantity' type="number" />
-                <button className='border-0 px-3'>UPDATE</button>
-            </form>
+            <input onBlur={inputField} className='border border-mute mx-3' name='quantity' type="number" />
+            <button onClick={updateQty} className='border-0 px-3'>UPDATE</button>
             <ToastContainer />
         </div>
     );

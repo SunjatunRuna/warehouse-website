@@ -5,7 +5,7 @@ const ManageInventories = () => {
     const [items, setItems] = useState([]);
     const navigate = useNavigate();
     useEffect( () => {
-        fetch('http://localhost:5000/product')
+        fetch('https://immense-spire-20781.herokuapp.com/product')
             .then(res => res.json())
             .then(data => setItems(data))
     }, []);
@@ -13,7 +13,7 @@ const ManageInventories = () => {
     const deleteItem = id =>{
         const proceed = window.confirm("Are you sure?");
         if(proceed){
-            const url = `http://localhost:5000/product/${id}`;
+            const url = `https://immense-spire-20781.herokuapp.com/product/${id}`;
             fetch(url, {
                 method: "DELETE"
             })
